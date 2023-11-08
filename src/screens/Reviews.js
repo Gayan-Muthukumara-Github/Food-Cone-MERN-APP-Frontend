@@ -26,7 +26,7 @@ export default function Reviews() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation }));
-        const response = await fetch("http://localhost:5000/api/givereviews", {
+        const response = await fetch("https://foodconeback.onrender.com/api/givereviews", {
          
           method: 'POST',
           headers: {
