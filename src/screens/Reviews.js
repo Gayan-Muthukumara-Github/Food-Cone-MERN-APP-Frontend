@@ -8,7 +8,7 @@ export default function Reviews() {
     const [reviews, setreviews] = useState([])
     let navigate = useNavigate()
     const loadReviews = async () => {
-        let response = await fetch("http://localhost:5000/api/reviewDetails", {
+        let response = await fetch("https://foodconeback.onrender.com/api/reviewDetails", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
