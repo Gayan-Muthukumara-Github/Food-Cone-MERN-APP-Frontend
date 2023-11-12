@@ -8,7 +8,7 @@ export default function Reviews() {
     const [reviews, setreviews] = useState([])
     let navigate = useNavigate()
     const loadReviews = async () => {
-        let response = await fetch("https://foodconeback.onrender.com/api/reviewDetails", {
+        let response = await fetch("http://localhost:5000/api/reviewDetails", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export default function Reviews() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation }));
-        const response = await fetch("https://foodconeback.onrender.com/api/givereviews", {
+        const response = await fetch("http://localhost:5000/api/givereviews", {
          
           method: 'POST',
           headers: {

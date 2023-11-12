@@ -12,6 +12,8 @@ import { CartProvider } from './components/ContextReducer';
 import MyOrder from './screens/MyOrders';
 import Reviews from './screens/Reviews';
 import ChatView from './screens/ChatView';
+import AddFoodCategory from './screens/Admin/AddFoodCategory'
+import AddFoodData from './screens/Admin/AddFoodData'
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <Route exact path="/myorder" element={<MyOrder />} />
             <Route exact path="/reviews" element={<Reviews />} />
             <Route exact path="/chatapp" element={<ChatView />} />
+            <Route exact path="/addfoodcategory" element={<AddFoodCategory/>} />
+            <Route exact path="/addfooddata" element={<AddFoodData/>} />
           </Routes>
         </div>
       </Router>

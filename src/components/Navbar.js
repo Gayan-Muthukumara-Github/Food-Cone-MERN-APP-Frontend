@@ -25,29 +25,51 @@ export default function Navbar(props) {
             <nav className="navbar navbar-expand-lg navbar-dark bg-warning position-sticky"
                 style={{ boxShadow: "0px 10px 20px black", filter: 'blur(20)', position: "fixed", zIndex: "10", width: "100%" }}>
                 <div className="container-fluid">
-                <img src="https://cdn-icons-png.flaticon.com/128/562/562678.png" class="custom-size" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]" />
+                    <img src="https://cdn-icons-png.flaticon.com/128/562/562678.png" className="custom-size" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]" />
 
                     <Link className="navbar-brand fs-1 text-black" to="/">FoodCone</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-                            <li className="nav-item">
-                                <Link className="nav-link fs-5 mx-2 active" aria-current="page" to="/">Home</Link> 
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link fs-5 mx-2 active text-black" aria-current="page" to="/reviews">Customer Reviews</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link fs-5 mx-2 active text-black" aria-current="page" to="/chatapp">Chat With Our Shop</Link>
-                            </li>
-                            {(localStorage.getItem("token")) ?
+                        {(localStorage.getItem('userEmail') === "admin@gmail.com" && localStorage.getItem("token")) ?
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+                                <li className="nav-item">
+                                    <Link className="nav-link fs-5 mx-2 active" aria-current="page" to="/addfoodcategory">Add Food Category</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link fs-5 mx-2 active" aria-current="page" to="/addfooddata">Add Food Data</Link>
+                                </li>
+                            </ul> : ""
+                        }
+                        {(!localStorage.getItem("token")) ?
+
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+                                <li className="nav-item">
+                                    <Link className="nav-link fs-5 mx-2 active" aria-current="page" to="/">Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link fs-5 mx-2 active text-black" aria-current="page" to="/reviews">Customer Reviews</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link fs-5 mx-2 active text-black" aria-current="page" to="/chatapp">Chat With Our Shop</Link>
+                                </li>
+                            </ul> : ""
+                        }
+                        {(localStorage.getItem("token") && (localStorage.getItem('userEmail') !== "admin@gmail.com")) ?
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                                 <li className="nav-item">
                                     <Link className="nav-link fs-5 mx-2 active text-black" aria-current="page" to="/myorder" >My Orders</Link>
                                 </li>
-                                 : ""}
-                        </ul>
+                                <li className="nav-item">
+                                    <Link className="nav-link fs-5 mx-2 active text-black" aria-current="page" to="/reviews">Customer Reviews</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link fs-5 mx-2 active text-black" aria-current="page" to="/chatapp">Chat With Our Shop</Link>
+                                </li>
+                            </ul>
+                            : ""}
+
                         {(!localStorage.getItem("token")) ?
                             <form className="d-flex">
                                 <Link className="btn bg-white text-warning mx-1 " to="/login">Login</Link>
@@ -56,11 +78,11 @@ export default function Navbar(props) {
                             <div>
 
                                 <div className="btn bg-white text-warning mx-2 " onClick={loadCart}>
-                                My Cart 
+                                    My Cart
                                     <Badge className="bg-dark">
-                                    {items.length} 
+                                        {items.length}
                                     </Badge>
-                                    
+
                                 </div>
 
                                 {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}

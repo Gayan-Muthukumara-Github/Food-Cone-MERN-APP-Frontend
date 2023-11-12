@@ -9,7 +9,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(JSON.stringify({ email: credentials.email, password: credentials.password }));
-    const response = await fetch("https://foodconeback.onrender.com/api/loginuser", {
+    const response = await fetch("http://localhost:5000/api/loginuser", {
      
       method: 'POST',
       headers: {
@@ -23,7 +23,13 @@ export default function Login() {
     if (json.success) {
       localStorage.setItem('userEmail', credentials.email)
       localStorage.setItem('token', json.authToken)
-      navigate("/");
+      if(localStorage.getItem('userEmail') === "admin@gmail.com"){
+        navigate("/addfoodcategory");
+      }
+      else{
+        navigate("/");
+      }
+      
 
     }
     else {
