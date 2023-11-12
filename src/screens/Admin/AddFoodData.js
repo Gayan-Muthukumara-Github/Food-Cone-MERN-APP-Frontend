@@ -13,7 +13,7 @@ export default function AddFoodData() {
 
     let navigate = useNavigate()
     const loadFoodItems = async () => {
-        let response = await fetch("http://localhost:5000/api/foodData", {
+        let response = await fetch("https://foodconeback.onrender.com/api/foodData", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export default function AddFoodData() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(JSON.stringify({ CategoryName: credentials.CategoryName, name: credentials.name, img: credentials.img, options: credentials.options, description: credentials.description }));
-        const response = await fetch("http://localhost:5000/api/additems", {
+        const response = await fetch("https://foodconeback.onrender.com/api/additems", {
 
             method: 'POST',
             headers: {
