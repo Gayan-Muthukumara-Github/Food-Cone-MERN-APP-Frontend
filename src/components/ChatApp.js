@@ -30,23 +30,23 @@ export default function ChatApp() {
           id: "issues",   
           options: [   
             {    
-              value: "React",   
-              label: "React",        
-              trigger: "React",       
+              value: "Menu Inquiry",   
+              label: "Menu Inquiry",        
+              trigger: "Menu Inquiry",       
             },       
-            { value: "Angular", label: "Angular", trigger: "Angular" },       
+            { value: "Specials or Promotions", label: "Specials or Promotions", trigger: "Specials or Promotions" },       
           ],       
         },       
         {       
-          id: "React",       
+          id: "Menu Inquiry",       
           message:        
-            "Thanks for letting your React issue, Our team will resolve your issue ASAP",        
+          "Would you like to see our menu?",        
           end: true,       
         },       
         {       
-          id: "Angular",       
+          id: "Specials or Promotions",       
           message:       
-            "Thanks for letting your Angular issue, Our team will resolve your issue ASAP",       
+          "We have some special offers today! Would you like to know more about them?",       
           end: true,       
         },       
       ]; 
@@ -58,3 +58,4 @@ export default function ChatApp() {
     </div>
   )
 }
+
