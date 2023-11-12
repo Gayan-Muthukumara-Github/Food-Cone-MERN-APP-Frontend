@@ -51,6 +51,16 @@ export default function AddFoodData() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const dataToSend = {
+            CategoryName: credentials.CategoryName,
+            name: credentials.name,
+            img: credentials.img,
+            options: [{
+                half: credentials.options.half,
+                full: credentials.options.full,
+            }],
+            description: credentials.description,
+        };
         console.log(JSON.stringify({ CategoryName: credentials.CategoryName, name: credentials.name, img: credentials.img, options: credentials.options, description: credentials.description }));
         const response = await fetch("http://localhost:5000/api/additems", {
 
@@ -58,7 +68,7 @@ export default function AddFoodData() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ CategoryName: credentials.CategoryName, name: credentials.name, img: credentials.img, options: credentials.options, description: credentials.description })
+            body: JSON.stringify(dataToSend)
 
         });
         const json = await response.json()

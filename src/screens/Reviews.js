@@ -40,7 +40,7 @@ export default function Reviews() {
         if (json.success) {
          
           alert("Feedback Added! Thank You!")
-          navigate("/reviews")
+          navigate("/")
     
         }
         else {
