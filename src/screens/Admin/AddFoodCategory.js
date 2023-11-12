@@ -7,7 +7,7 @@ export default function AddFoodCategory() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(JSON.stringify({ CategoryName: credentials.categoryname}));
-    const response = await fetch("http://localhost:5000/api/addcategory", {
+    const response = await fetch("https://foodconeback.onrender.com/api/addcategory", {
      
       method: 'POST',
       headers: {
