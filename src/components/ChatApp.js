@@ -23,7 +23,7 @@ export default function ChatApp() {
         },      
         {       
           id: "Name",     
-          message: "Hi {previousValue}, Please select your issue",     
+          message: "Hi {previousValue}, Please ask your quetions",     
           trigger: "issues",     
         },      
         {      
